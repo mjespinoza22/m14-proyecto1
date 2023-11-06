@@ -1,0 +1,41 @@
+[client]
+port = 3306
+socket = /var/run/mysqld/mysqld.sock
+
+[mysqld]
+port = 3306
+socket = /var/run/mysqld/mysqld.sock
+basedir = /usr
+datadir = /var/lib/mysql
+tmpdir = /tmp
+user = mysql
+
+bind-address = "*"
+
+# Configuración de InnoDB
+default_storage_engine = InnoDB
+innodb_buffer_pool_size = 1G
+innodb_log_file_size = 256M
+
+# Otras configuraciones
+max_allowed_packet = 16M
+key_buffer_size = 32M
+thread_stack = 192K
+thread_cache_size = 8
+
+# Esta opción es importante para que las aplicaciones cliente utilicen utf8mb4 como conjunto de caracteres predeterminado
+character_set_server = utf8mb4
+collation_server = utf8mb4_unicode_ci
+
+[mysqldump]
+quick
+quote-names
+max_allowed_packet = 16M
+
+[mysql]
+# No auto-rehashing. Only rehash when asked.
+# ¡Esto ahorra mucho tiempo cuando se inicia mysql!
+no-auto-rehash
+
+[isamchk]
+key_buffer = 16M
