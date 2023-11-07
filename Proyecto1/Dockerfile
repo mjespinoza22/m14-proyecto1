@@ -44,6 +44,10 @@ RUN chmod +x /usr/local/bin/startup.sh
 # Exponer los puertos para SSH y Apache2
 EXPOSE 22 80 443 5432 9001 3306
 
+# agregar usuario para ssh 
+RUN useradd -m m14 && \
+    echo 'm14:12345' | chpasswd
+
 # Comando a ejecutar al iniciar el contenedor (iniciar los servicios)
 CMD ["startup.sh"]
 

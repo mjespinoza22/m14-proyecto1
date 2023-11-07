@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#service ssh start 
+service ssh start 
 #service apache2 start 
 service supervisor stop
 
@@ -24,9 +24,6 @@ mysqladmin shutdown
 
 service supervisor start
 supervisorctl
-
-# agregar usuario para ssh 
-sudo useradd -m -p $(echo 12345 | openssl passwd -1 -stdin) -s /bin/bash m14
 
 # Iniciar MariaDB normalmente
 #mysqld_safe
